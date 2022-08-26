@@ -37,7 +37,11 @@ type HookConfig struct {
 }
 
 var plugin = InstallPlugin(&HookConfig{
-	RetryTimes: 3,
+	RetryTimes:  3,
+	Header:      make(map[string]string),
+	URLList:     make(map[string]string),
+	RequestList: make(map[string]*HookAddr),
+	Extra:       make(map[string]interface{}),
 })
 
 func (h *HookConfig) OnEvent(event any) {
